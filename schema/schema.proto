@@ -3,8 +3,7 @@ syntax = "proto3";
 option go_package = "proto.models";
 
 
-// По размеру сериализованных данных repeated KVType = map<...,...>
-// поэтому можно считать эквивалентом
+// repeated KVType<ltype, rtype> эквивалент map<ltype, rtype>
 message KVString {
     string L = 1;
     string R = 2;

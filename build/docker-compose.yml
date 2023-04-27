@@ -1,11 +1,11 @@
 version: "3"
 services:
   native-serialize-benchmarker:
-    image: serialize-benchmarker
+    image: azuremint/serialize-benchmarker
     container_name: native-serialize-benchmarker
-    build:
-      context: ..
-      dockerfile: ./build/serialize-benchmarker.dockerfile
+    # build:
+    #   context: ..
+    #   dockerfile: ./build/serialize-benchmarker.dockerfile
     environment:
       - PORT=2001
       - FORMAT=native
@@ -16,11 +16,11 @@ services:
       - onet
 
   xml-serialize-benchmarker:
-    image: serialize-benchmarker
+    image: azuremint/serialize-benchmarker
     container_name: xml-serialize-benchmarker
-    build:
-      context: ..
-      dockerfile: ./build/serialize-benchmarker.dockerfile
+    # build:
+    #   context: ..
+    #   dockerfile: ./build/serialize-benchmarker.dockerfile
     environment:
       - PORT=2002
       - FORMAT=xml
@@ -31,11 +31,11 @@ services:
       - onet
 
   json-serialize-benchmarker:
-    image: serialize-benchmarker
+    image: azuremint/serialize-benchmarker
     container_name: json-serialize-benchmarker
-    build:
-      context: ..
-      dockerfile: ./build/serialize-benchmarker.dockerfile
+    # build:
+    #   context: ..
+    #   dockerfile: ./build/serialize-benchmarker.dockerfile
     environment:
       - PORT=2003
       - FORMAT=json
@@ -46,11 +46,11 @@ services:
       - onet
 
   protobuf-serialize-benchmarker:
-    image: serialize-benchmarker
+    image: azuremint/serialize-benchmarker
     container_name: protobuf-serialize-benchmarker
-    build:
-      context: ..
-      dockerfile: ./build/serialize-benchmarker.dockerfile
+    # build:
+    #   context: ..
+    #   dockerfile: ./build/serialize-benchmarker.dockerfile
     environment:
       - PORT=2004
       - FORMAT=protobuf
@@ -61,11 +61,11 @@ services:
       - onet
 
   avro-serialize-benchmarker:
-    image: serialize-benchmarker
+    image: azuremint/serialize-benchmarker
     container_name: avro-serialize-benchmarker
-    build:
-      context: ..
-      dockerfile: ./build/serialize-benchmarker.dockerfile
+    # build:
+    #   context: ..
+    #   dockerfile: ./build/serialize-benchmarker.dockerfile
     environment:
       - PORT=2005
       - FORMAT=avro
@@ -76,11 +76,11 @@ services:
       - onet
 
   yaml-serialize-benchmarker:
-    image: serialize-benchmarker
+    image: azuremint/serialize-benchmarker
     container_name: yaml-serialize-benchmarker
-    build:
-      context: ..
-      dockerfile: ./build/serialize-benchmarker.dockerfile
+    # build:
+    #   context: ..
+    #   dockerfile: ./build/serialize-benchmarker.dockerfile
     environment:
       - PORT=2006
       - FORMAT=yaml
@@ -91,11 +91,11 @@ services:
       - onet
 
   message-pack-serialize-benchmarker:
-    image: serialize-benchmarker
+    image: azuremint/serialize-benchmarker
     container_name: message-pack-serialize-benchmarker
-    build:
-      context: ..
-      dockerfile: ./build/serialize-benchmarker.dockerfile
+    # build:
+    #   context: ..
+    #   dockerfile: ./build/serialize-benchmarker.dockerfile
     environment:
       - PORT=2007
       - FORMAT=message_pack
@@ -106,11 +106,11 @@ services:
       - onet
 
   proxy:
-    image: proxy
+    image: azuremint/serializers-proxy
     container_name: proxy
-    build:
-      context: ..
-      dockerfile: ./build/proxy.dockerfile
+    # build:
+    #   context: ..
+    #   dockerfile: ./build/proxy.dockerfile
     environment:
       - PORT=2000
       - NATIVE_PORT=2001

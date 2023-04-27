@@ -7,7 +7,8 @@ import (
 )
 
 const (
-	BufferSize = 8192
+	BufferSize  = 8192
+	DefaultAddr = "0.0.0.0"
 )
 
 func JoinAddrAndPort(addr string, port int) string {
@@ -15,7 +16,7 @@ func JoinAddrAndPort(addr string, port int) string {
 }
 
 func InitUDPServer(port int) *net.UDPConn {
-	udpAddr, err := net.ResolveUDPAddr("udp", JoinAddrAndPort("0.0.0.0", port))
+	udpAddr, err := net.ResolveUDPAddr("udp", JoinAddrAndPort(DefaultAddr, port))
 	if err != nil {
 		panic(err)
 	}

@@ -18,15 +18,14 @@
 
 ```
 cd build
-docker compose build
 docker compose up
 ```
 
-**DockerHub**:
-
-```
-TODO
-```
+<details>
+    <summary> Локальная сборка </summary>
+    Для сборки в обход DockerHub нужно раскомментировать секции build в docker-compose.yml и выполнить
+    docker compose build
+</details>
 
 ## Формат запросов
 
