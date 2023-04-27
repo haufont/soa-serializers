@@ -109,13 +109,11 @@ func (h Handler) HandleAll(clients Clients) string {
 	responses := make([]string, 0)
 	responsesChan := make(chan string)
 	for f, client := range clients {
-		fc := f
-		clientc := client
-		go func() {
-			responsesChan <- h.HandleClient(fc, clientc)
-		}()
+		go func(f format.Format, client *net.UDPConn) {
+			responsesChan <- h.HandleClient(f, client)
+		}(f, client)
 	}
-	for _, _ = range h.mclients {
+	for range clients {
 		responses = append(responses, <-responsesChan)
 	}
 	return strings.Join(responses, "")

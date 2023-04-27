@@ -46,7 +46,7 @@ ApacheAvro-1038-10.137µs-6.265µs
 
 Также через прокси можно получить все результаты запросом ```get_result all```:
 ```
-$ echo -n "get_result all" | nc -u -w 1 127.0.0.1 2000
+$ echo -n "get_result all" | nc -u -w 2 127.0.0.1 2000
 ApacheAvro-1038-5.99µs-8.981µs
 Native(gob)-2018-12.92µs-11.54µs
 GoogleProtocolBuffers-1277-6.896µs-23.613µs
@@ -58,6 +58,10 @@ YAML-4327-269.368µs-346.812µs
 
 ## Подробности для проверки
 
-Реализован продвинутый вариант с прокси.
+Реализован продвинутый вариант с прокси + публикация на DockerHub:
+
+https://hub.docker.com/repository/docker/azuremint/serializers-proxy/general
+
+https://hub.docker.com/repository/docker/azuremint/serialize-benchmarker/general
 
 Очень продвинутый вариант не реализован. Хоть и есть ```get_result all```, но он выполнятся не multicast запросом, а через обычные параллельные запросы в контейнеры.

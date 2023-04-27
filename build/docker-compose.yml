@@ -9,11 +9,10 @@ services:
     environment:
       - PORT=2001
       - FORMAT=native
-      - MADDR=${MADDR}
     ports:
       - 2001:2001/udp
     networks:
-      - onet
+      - net
 
   xml-serialize-benchmarker:
     image: azuremint/serialize-benchmarker
@@ -24,11 +23,10 @@ services:
     environment:
       - PORT=2002
       - FORMAT=xml
-      - MADDR=${MADDR}
     ports:
       - 2002:2002/udp
     networks:
-      - onet
+      - net
 
   json-serialize-benchmarker:
     image: azuremint/serialize-benchmarker
@@ -39,11 +37,10 @@ services:
     environment:
       - PORT=2003
       - FORMAT=json
-      - MADDR=${MADDR}
     ports:
       - 2003:2003/udp
     networks:
-      - onet
+      - net
 
   protobuf-serialize-benchmarker:
     image: azuremint/serialize-benchmarker
@@ -54,11 +51,10 @@ services:
     environment:
       - PORT=2004
       - FORMAT=protobuf
-      - MADDR=${MADDR}
     ports:
       - 2004:2004/udp
     networks:
-      - onet
+      - net
 
   avro-serialize-benchmarker:
     image: azuremint/serialize-benchmarker
@@ -69,11 +65,10 @@ services:
     environment:
       - PORT=2005
       - FORMAT=avro
-      - MADDR=${MADDR}
     ports:
       - 2005:2005/udp
     networks:
-      - onet
+      - net
 
   yaml-serialize-benchmarker:
     image: azuremint/serialize-benchmarker
@@ -84,11 +79,10 @@ services:
     environment:
       - PORT=2006
       - FORMAT=yaml
-      - MADDR=${MADDR}
     ports:
       - 2006:2006/udp
     networks:
-      - onet
+      - net
 
   message-pack-serialize-benchmarker:
     image: azuremint/serialize-benchmarker
@@ -99,11 +93,10 @@ services:
     environment:
       - PORT=2007
       - FORMAT=message_pack
-      - MADDR=${MADDR}
     ports:
       - 2007:2007/udp
     networks:
-      - onet
+      - net
 
   proxy:
     image: azuremint/serializers-proxy
@@ -120,11 +113,10 @@ services:
       - AVRO_PORT=2005
       - YAML_PORT=2006
       - MESSAGE_PACK_PORT=2007
-      - MADDR=${MADDR}
     ports:
       - 2000:2000/udp
     networks:
-      - onet
+      - net
     depends_on:
       - native-serialize-benchmarker
       - xml-serialize-benchmarker
@@ -135,5 +127,5 @@ services:
       - message-pack-serialize-benchmarker
 
 networks:
-  onet:
-   internal: true
+  net:
+   driver: bridge
