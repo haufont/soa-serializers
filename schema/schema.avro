@@ -1,0 +1,62 @@
+{
+    "namespace": "Avro",
+    "type": "record",
+    "name": "TestType",
+    "fields": [
+        { "name": "BoolField", "type": "boolean" },
+        { "name": "ByteField", "type": "int" },
+        { "name": "IntField", "type": "int" },
+        { "name": "Int64Field", "type": "long" },
+        { "name": "UInt32Field", "type": "long" },
+        { "name": "FloatField", "type": "float" },
+        { "name": "DoubleField", "type": "double" },
+        { "name": "NullStringField", "type": "string" },
+        { "name": "StringField", "type": "string" },
+        { "name": "BytesField", "type": "bytes" },
+        { "name": "NestedField", "type": {
+            "type" : "record",
+            "name" : "NestedTestType",
+            "fields" : [
+                { "name": "BoolField", "type": "boolean" },
+                { "name": "ByteField", "type": "int" },
+                { "name": "IntField", "type": "int" },
+                { "name": "Int64Field", "type": "long" },
+                { "name": "UInt32Field", "type": "long" },
+                { "name": "FloatField", "type": "float" },
+                { "name": "DoubleField", "type": "double" },
+                { "name": "NullStringField", "type": "string" },
+                { "name": "StringField", "type": "string" },
+                { "name": "BytesField", "type": "bytes" },
+                { "name": "StringArrayField", "type": {
+                    "type": "array", "items": "string"
+                }},
+                { "name": "IntArrayField", "type": {
+                    "type": "array", "items": "int"
+                }},
+                { "name": "MapField", "type": {
+                    "type": "array", "items": {
+                        "type": "record",
+                        "name": "KVString",
+                        "fields" : [
+                            { "name": "L", "type": "string" },
+                            { "name": "R", "type": "string" }
+                        ]
+                    }
+                }}
+            ]
+        }},
+        { "name": "ArrayField", "type": {
+            "type": "array", "items": "NestedTestType"
+        }},
+        { "name": "MapField", "type": {
+            "type": "array", "items": {
+                "type": "record",
+                "name": "KVNestedTestType",
+                "fields" : [
+                    { "name": "L", "type": "string" },
+                    { "name": "R", "type": "NestedTestType" }
+                ]
+            }
+        }}
+    ]
+}

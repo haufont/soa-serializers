@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+option go_package = "proto.models";
+
+
+// По размеру сериализованных данных repeated KVType = map<...,...>
+// поэтому можно считать эквивалентом
+message KVString {
+    string L = 1;
+    string R = 2;
+}
+
+message NestedTestType {
+    bool                BoolField           = 1;
+    int32               ByteField           = 2;
+    int32               IntField            = 3;
+    int64               Int64Field          = 4;
+    uint32              UInt32Field         = 5;
+    float               FloatField          = 6;
+    double              DoubleField         = 7;
+    string              NullStringField     = 8;
+    string              StringField         = 9;
+    bytes               BytesField          = 10;
+    repeated string     StringArrayField    = 11;
+    repeated int32      IntArrayField       = 12;
+    repeated KVString   MapField            = 13;
+}
+
+message KVNestedTestType {
+    string         L = 1;
+    NestedTestType R = 2;
+}
+
+message TestType {
+    bool                        BoolField       = 1;
+    int32                       ByteField       = 2;
+    int32                       IntField        = 3;
+    int64                       Int64Field      = 4;
+    uint32                      UInt32Field     = 5;
+    float                       FloatField      = 6;
+    double                      DoubleField     = 7;
+    string                      NullStringField = 8;
+    string                      StringField     = 9;
+    bytes                       BytesField      = 10;
+    NestedTestType              NestedField     = 11;
+    repeated NestedTestType     ArrayField      = 12;
+    repeated KVNestedTestType   MapField        = 13;
+}

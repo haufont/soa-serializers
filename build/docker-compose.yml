@@ -1,0 +1,139 @@
+version: "3"
+services:
+  native-serialize-benchmarker:
+    image: serialize-benchmarker
+    container_name: native-serialize-benchmarker
+    build:
+      context: ..
+      dockerfile: ./build/serialize-benchmarker.dockerfile
+    environment:
+      - PORT=2001
+      - FORMAT=native
+      - MADDR=${MADDR}
+    ports:
+      - 2001:2001/udp
+    networks:
+      - onet
+
+  xml-serialize-benchmarker:
+    image: serialize-benchmarker
+    container_name: xml-serialize-benchmarker
+    build:
+      context: ..
+      dockerfile: ./build/serialize-benchmarker.dockerfile
+    environment:
+      - PORT=2002
+      - FORMAT=xml
+      - MADDR=${MADDR}
+    ports:
+      - 2002:2002/udp
+    networks:
+      - onet
+
+  json-serialize-benchmarker:
+    image: serialize-benchmarker
+    container_name: json-serialize-benchmarker
+    build:
+      context: ..
+      dockerfile: ./build/serialize-benchmarker.dockerfile
+    environment:
+      - PORT=2003
+      - FORMAT=json
+      - MADDR=${MADDR}
+    ports:
+      - 2003:2003/udp
+    networks:
+      - onet
+
+  protobuf-serialize-benchmarker:
+    image: serialize-benchmarker
+    container_name: protobuf-serialize-benchmarker
+    build:
+      context: ..
+      dockerfile: ./build/serialize-benchmarker.dockerfile
+    environment:
+      - PORT=2004
+      - FORMAT=protobuf
+      - MADDR=${MADDR}
+    ports:
+      - 2004:2004/udp
+    networks:
+      - onet
+
+  avro-serialize-benchmarker:
+    image: serialize-benchmarker
+    container_name: avro-serialize-benchmarker
+    build:
+      context: ..
+      dockerfile: ./build/serialize-benchmarker.dockerfile
+    environment:
+      - PORT=2005
+      - FORMAT=avro
+      - MADDR=${MADDR}
+    ports:
+      - 2005:2005/udp
+    networks:
+      - onet
+
+  yaml-serialize-benchmarker:
+    image: serialize-benchmarker
+    container_name: yaml-serialize-benchmarker
+    build:
+      context: ..
+      dockerfile: ./build/serialize-benchmarker.dockerfile
+    environment:
+      - PORT=2006
+      - FORMAT=yaml
+      - MADDR=${MADDR}
+    ports:
+      - 2006:2006/udp
+    networks:
+      - onet
+
+  message-pack-serialize-benchmarker:
+    image: serialize-benchmarker
+    container_name: message-pack-serialize-benchmarker
+    build:
+      context: ..
+      dockerfile: ./build/serialize-benchmarker.dockerfile
+    environment:
+      - PORT=2007
+      - FORMAT=message_pack
+      - MADDR=${MADDR}
+    ports:
+      - 2007:2007/udp
+    networks:
+      - onet
+
+  proxy:
+    image: proxy
+    container_name: proxy
+    build:
+      context: ..
+      dockerfile: ./build/proxy.dockerfile
+    environment:
+      - PORT=2000
+      - NATIVE_PORT=2001
+      - XML_PORT=2002
+      - JSON_PORT=2003
+      - PROTOBUF_PORT=2004
+      - AVRO_PORT=2005
+      - YAML_PORT=2006
+      - MESSAGE_PACK_PORT=2007
+      - MADDR=${MADDR}
+    ports:
+      - 2000:2000/udp
+    networks:
+      - onet
+    depends_on:
+      - native-serialize-benchmarker
+      - xml-serialize-benchmarker
+      - json-serialize-benchmarker
+      - protobuf-serialize-benchmarker
+      - avro-serialize-benchmarker
+      - yaml-serialize-benchmarker
+      - message-pack-serialize-benchmarker
+
+networks:
+  onet:
+   internal: true
